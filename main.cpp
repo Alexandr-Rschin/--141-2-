@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "tringle.h"
 #include "point.h"
 /**
@@ -6,7 +7,7 @@
  * @param report - строка информации
  * @return считанное значение
  */
-double getValue(std::string report = "");
+double getValue(const std::string& report = "");
 /**
  * @brief Точка входа в программу
  * @return 0, если программа выполнена корректно
@@ -28,7 +29,7 @@ int main()
     std::cout << "Площадь равна: " << myTriangle.getPlo() << std::endl;
     return 0;
 }
-double getValue(std::string report)
+double getValue(const std::string& report)
 {
     std::cout << report;
     double value = 0;
