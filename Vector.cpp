@@ -39,7 +39,6 @@ std::string Vector::to_string() const
 {
     if (is_empty())
         return "Empty";
-
     std::stringstream ss;
     for (size_t i = 0; i < m_count; ++i)
     {
@@ -57,7 +56,7 @@ bool Vector::is_empty() const
 {
     return m_count == 0;
 }
-void Vector::insertAt(size_t index, const int value)
+void Vector::insertAt(size_t index, int value)
 {
     if (index > m_count)
         index = m_count;
@@ -75,7 +74,7 @@ void Vector::insertAt(size_t index, const int value)
     m_elements = tempArray;
     m_count++;
 }
-void Vector::removeAt(const size_t index)
+void Vector::removeAt(size_t index)
 {
     if (index >= m_count)
     {
@@ -94,7 +93,7 @@ void Vector::removeAt(const size_t index)
     m_elements = tempArray;
     m_count--;
 }
-int Vector::indexOf(const int value) const
+int Vector::indexOf(int value) const
 {
     for (size_t i = 0; i < m_count; ++i)
     {
@@ -131,7 +130,7 @@ Vector &Vector::operator=(Vector &&other)
     }
     return *this;
 }
-int &Vector::operator[](const size_t index)
+int &Vector::operator[](size_t index)
 {
     if (index >= m_count)
     {
@@ -139,7 +138,7 @@ int &Vector::operator[](const size_t index)
     }
     return m_elements[index];
 }
-const int &Vector::operator[](const size_t index) const
+const int &Vector::operator[](size_t index) const
 {
     if (index >= m_count)
     {
