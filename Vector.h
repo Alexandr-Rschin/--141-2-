@@ -1,7 +1,7 @@
-#pragma once
 #include <iostream>
 #include <initializer_list>
 #include <string>
+
 /**
  * @brief Класс Вектор
  */
@@ -16,6 +16,7 @@ private:
      * @brief Количество элементов в коллекции
      */
     size_t m_count;
+
 public:
     /**
      * @brief Конструктор по умолчанию
@@ -37,6 +38,7 @@ public:
      * @brief Деструктор
      */
     ~Vector();
+
     /**
      * @brief Возвращает строку с содержимым коллекции
      */
@@ -49,23 +51,25 @@ public:
      * @brief Проверка коллекции на пустоту
      */
     bool is_empty() const;
+
     /**
      * @brief Вставка элемента по заданному индексу
      * @param index позиция
      * @param value новое значение
      */
-    void insertAt(size_t index, int value);
+    void insertAt(const size_t index, const int value);
     /**
      * @brief Удаление элемента по заданному индексу
      * @param index позиция
      */
-    void removeAt(size_t index);
+    void removeAt(const size_t index);
     /**
      * @brief Поиск элемента в коллекции
      * @param value искомое значение
      * @return индекс первого вхождения или -1, если не найден
      */
-    int indexOf(int value) const;
+    int indexOf(const int value) const;
+
     /**
      * @brief Оператор присваивания (копирование)
      */
@@ -73,15 +77,17 @@ public:
     /**
      * @brief Оператор присваивания (перемещение)
      */
-    Vector &operator=(Vector &&other);
+    Vector &operator=(const Vector &&other); // Добавлен const для перемещаемого объекта
+
     /**
-     * @brief Переопределение оператора разыменования
+     * @brief Переопределение оператора разыменования (для чтения и записи)
      */
-    int &operator[](size_t index);
+    int &operator[](const size_t index);
     /**
-     * @brief Переопределение оператора разыменования
+     * @brief Переопределение оператора разыменования (только для чтения)
      */
-    const int &operator[](size_t index) const;
+    const int &operator[](const size_t index) const;
+
     /**
      * @brief Перегрузка оператора сдвига влево
      */
