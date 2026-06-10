@@ -1,22 +1,30 @@
 #include <iostream>
 #include <cmath>
+#include <limits> // Добавили для использования std::numeric_limits
 #include "tringle.h"
+
 Triangle::Triangle(const Point& p1, const Point& p2, const Point& p3)
 {
     this->p1 = p1;
     this->p2 = p2;
     this->p3 = p3;
-    if (p1 == p2  p2 == p3  p1 == p3)
+    
+    // Добавлены операторы ||
+    if (p1 == p2 || p2 == p3 || p1 == p3)
     {
         std::cout << "Ошибка: Точки совпадают!" << std::endl;
         exit(1);
     }
-    const double EPS = 1e-9;
+    
+    // Используем встроенную константу epsilon
+    const double EPS = std::numeric_limits<double>::epsilon();
+    
     if (this->getPlo() < EPS)
     {
         std::cout << "Ошибка: Треугольник не существует." << std::endl;
         exit(1);
     }
+    
     double check = (p3.getX() - p1.getX()) * (p2.getY() - p1.getY()) - (p3.getY() - p1.getY()) * (p2.getX() - p1.getX());
     if (std::abs(check) < EPS)
     {
@@ -24,6 +32,7 @@ Triangle::Triangle(const Point& p1, const Point& p2, const Point& p3)
         exit(1);
     }
 }
+
 Point Triangle::getPointH() const
 {
     double BCx = p3.getX() - p2.getX();
@@ -35,6 +44,7 @@ Point Triangle::getPointH() const
     double hy = p2.getY() + t * BCy;
     return Point(hx, hy);
 }
+
 double Triangle::getPlo() const
 {
     return std::fabs((p2.getX() - p1.getX()) * (p3.getY() - p1.getY()) - (p3.getX() - p1.getX()) * (p2.getY() - p1.getY())) / 2.0;
