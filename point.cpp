@@ -1,5 +1,3 @@
-point.cpp
-
 #include "point.h"
 #include <cmath> 
 #include <limits> // Добавили для использования std::numeric_limits
