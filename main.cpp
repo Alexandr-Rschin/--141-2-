@@ -7,31 +7,12 @@ using namespace std;
  * @brief Нумерация объектов выбора
  */
 enum Actions
-{INSERT = 1,REMOVE,SEARCH};
-/**
- * @brief Выводит ошибку и завершает работу программы
- * @param text - текст, выводимый на экран
- */
-void ERROR(const string text)
-{
-    cerr << text << endl;
-    exit(1);
-}
-/**
- * @brief Считывает значение, введенное с клавиатуры
- * @return считанное значение
- */
-int get_choice()
-{
-    int number = 0;
-    cin >> number;
-    if (cin.fail())
-    {
-        ERROR("Ошибка ввода");
-    }
-    return number;
-}
-/**
+{INSERT = 1, REMOVE, SEARCH};
+
+void ERROR(const string text);
+int get_choice();
+
+/
  * @brief Точка входа в программу
  * @return Если программа выполнена корректно - 0, иначе 1
  */
@@ -115,4 +96,28 @@ int main()
              << "Первый элемент равен: " << collection[0] << endl;
     }
     return 0;
+}
+/
+ * @brief Выводит ошибку и завершает работу программы
+ * @param text - текст, выводимый на экран
+ */
+void ERROR(const string text)
+{
+    cerr << text << endl;
+    exit(1);
+}
+
+/**
+ * @brief Считывает значение, введенное с клавиатуры
+ * @return считанное значение
+ */
+int get_choice()
+{
+    int number = 0;
+    cin >> number;
+    if (cin.fail())
+    {
+        ERROR("Ошибка ввода");
+    }
+    return number;
 }
